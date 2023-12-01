@@ -1,43 +1,62 @@
 #include <iostream>
-#include <algorithm>
 #include <string>
-#include <ctype.h>
 
 using namespace std;
 
 int main() {
-    char sentence[101];
-    char preChar = ' ';
+    string sentence;
 
     cout << "Enter a sentence: " << endl;
-    cin.getline(sentence, 101);
-    do {
-        if (isalpha(sentence[0])) {
-            toupper(sentence[0]);
+    getline(cin, sentence);
+
+    if (isalpha(sentence[0]) && isalpha(sentence[1]) && isalpha(sentence[2]) && isalpha(sentence[3])) {
+        if ((isspace(sentence[4])) || (sentence[4] == '.')) {
+            if (isupper(sentence[0])) {
+                sentence[0] = 'L';
+                sentence[1] = 'o';
+                sentence[2] = 'v';
+                sentence[3] = 'e';
+            }
+            else {
+                sentence[0] = 'l';
+                sentence[1] = 'o';
+                sentence[2] = 'v';
+                sentence[3] = 'e';
+            }
         }
         else {
-            for (int i = 0; i < 100; i++) {
-                sentence[0] = sentence[1];
-            }
-        }
-    } while (isspace(sentence[0]));
 
-    for (int i = 1; i < sizeof(sentence); i++) {
-        if (isalpha(sentence[i])) {
-            tolower(sentence[i]);
-        }
-        else if (isspace(sentence[i])) {
-            while (isspace(sentence[i + 1])) {
-                for (int j = i; j < 100 - i; j++) {
-                    sentence[i + 1] = sentence[i + 2];
-                }
-            }
-        }
-        else if (sentence[i] = '.') {
-            break;
         }
     }
+    else {
 
-    cout << "Corrected sentence: " << sentence;
+    }
+
+    for (int i = 1; i < sizeof(sentence); i++) {
+        if (isalpha(sentence[i]) && isalpha(sentence[i + 1]) && isalpha(sentence[i + 2]) && isalpha(sentence[i + 3])) {
+            if (((isspace(sentence[i - 1])) && (isspace(sentence[i + 4]))) || ((isspace(sentence[i - 1])) && (sentence[i + 4] == '.'))) {
+                if (isupper(sentence[i])) {
+                    sentence[i] = 'L';
+                    sentence[i + 1] = 'o';
+                    sentence[i + 2] = 'v';
+                    sentence[i + 3] = 'e';
+                }
+                else {
+                    sentence[i] = 'l';
+                    sentence[i + 1] = 'o';
+                    sentence[i + 2] = 'v';
+                    sentence[i + 3] = 'e';
+                }
+            }
+            else {
+
+            }
+        }
+        else {
+
+        }
+    }
+    cout << "Sentence remade: " << sentence;
+
     return 0;
 }
